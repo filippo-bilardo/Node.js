@@ -30,7 +30,7 @@
 	"updateContentCommand": "pnpm install",
 
 	//start my local environment with the command pnpm dev
-	"postAttachCommand": "pnpm dev",
+	//"postAttachCommand": "pnpm dev",
 
 	//open a browser preview directly within your codespace
 	"portsAttributes": {
