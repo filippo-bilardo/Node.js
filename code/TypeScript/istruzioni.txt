@@ -1,0 +1,22 @@
+//Node.js
+//Editor
+//Installazione TypeScript
+npm install -g typescript
+
+//Creazione progetto es01
+mkdir es01
+cd es01
+tsc --init
+
+code app.tsc
+let message: string = 'Hello, World!';
+console.log(message);
+
+tsc app.ts
+node app.js
+
+//If you installed the ts-node module you can use just one command
+//ts-node app.ts
+
+//Progetto es02
+https://www.typescripttutorial.net/typescript-tutorial/typescript-hello-world/
