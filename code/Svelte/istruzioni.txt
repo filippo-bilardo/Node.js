@@ -1,0 +1,10 @@
+//Node.js
+//Editor
+//Installazione vite
+npm init vite@latest
+
+...
+...
+npx degit sveltejs/template svelte-hello-world
+npm install
+non funziona
