@@ -48,5 +48,8 @@
 				//"DavidAnson.vscode-markdownlint"
 			]
 		}
+	},
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/jshint:2": {}
 	}
 }
