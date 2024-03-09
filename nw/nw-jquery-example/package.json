@@ -1,0 +1,14 @@
+{
+  "name": "your-app-name",
+  "main": "index.html",
+  "scripts": {
+    "start": "nw ."
+  },
+  "devDependencies": {
+    "nw": "sdk",
+    "nw-builder": "^4.6.4"
+  },
+  "dependencies": {
+    "jquery": "^3.5.0"
+  }
+}
