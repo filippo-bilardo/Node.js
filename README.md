@@ -30,3 +30,22 @@ WantedBy=multi-user.target
 
 sudo systemctl enable novnc.service
 sudo systemctl start novnc.service
+
+
+------------------------------
+sudo apt -y install novnc python3-websockify python3-numpy
+sudo apt -y install tigervnc-standalone-server
+# set VNC password
+vncpasswd #(pwd)
+# start VNC server with MATE desktop, display number [1], screen resolution [800x600]
+# 1024×768, 1280×720, 1920×1080, 2048×1080
+tigervncserver -xstartup /usr/bin/mate-session -geometry 1024×768 -localhost no :1
+tigervncserver -xstartup /usr/bin/mate-session -localhost no :1
+tigervncserver -xstartup /usr/bin/xterm
+
+# to stop VNC session, run like follows
+ubuntu@dlp:~$ tigervncserver -kill :1
+
+openssl req -x509 -nodes -newkey rsa:3072 -keyout novnc.pem -out novnc.pem -days 3650
+websockify -D --web=/usr/share/novnc/ --cert=/home/ubuntu/novnc.pem 6080 localhost:5901
+
