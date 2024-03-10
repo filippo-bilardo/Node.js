@@ -44,8 +44,9 @@ tigervncserver -xstartup /usr/bin/mate-session -localhost no :1
 tigervncserver -xstartup /usr/bin/xterm
 
 # to stop VNC session, run like follows
-ubuntu@dlp:~$ tigervncserver -kill :1
+tigervncserver -kill :1
 
 openssl req -x509 -nodes -newkey rsa:3072 -keyout novnc.pem -out novnc.pem -days 3650
 websockify -D --web=/usr/share/novnc/ --cert=/home/ubuntu/novnc.pem 6080 localhost:5901
 
+sudo apt-get install mate-desktop-environment
