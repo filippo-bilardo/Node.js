@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elenco alunni</title>
+</head>
+<body>
+  <h1>Elenco alunni</h1>
+  <ul id="elenco-alunni">
+    <li>Mario Rossi</li>
+    <li>Anna Bianchi</li>
+    <li>Luca Verdi</li>
+    <li>Sofia Neri</li>
+    <li>Marco Gialli</li>
+    <li>Giulia Rossi</li>
+    <li>Andrea Verdi</li>
+    <li>Elena Bianchi</li>
+    <li>Paolo Gialli</li>
+    <li>Francesca Neri</li>
+  </ul>
+
+  <script>
+    const elencoAlunni = document.getElementById('elenco-alunni');
+
+    // Gestisce la selezione di una riga
+    elencoAlunni.addEventListener('click', (event) => {
+      const rigaSelezionata = event.target.closest('li');
+      console.log(rigaSelezionata)
+      if (rigaSelezionata) {
+        // Rimuovi la classe "selezionata" da tutte le righe
+        const righe = elencoAlunni.querySelectorAll('li');
+        for (const riga of righe) {
+          riga.classList.remove('selezionata');
+        }
+        // Aggiungi la classe "selezionata" alla riga cliccata
+        rigaSelezionata.classList.add('selezionata');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selezione multipla nomi</title>
+</head>
+<body>
+  <h1>Seleziona i nomi</h1>
+  <select id="nomi" multiple size="10">
+    <option value="Mario Rossi">Mario Rossi</option>
+    <option value="Anna Bianchi">Anna Bianchi</option>
+    <option value="Luca Verdi">Luca Verdi</option>
+    <option value="Sofia Neri">Sofia Neri</option>
+    <option value="Marco Gialli">Marco Gialli</option>
+    <option value="Giulia Rossi">Giulia Rossi</option>
+    <option value="Andrea Verdi">Andrea Verdi</option>
+    <option value="Elena Bianchi">Elena Bianchi</option>
+    <option value="Paolo Gialli">Paolo Gialli</option>
+    <option value="Francesca Neri">Francesca Neri</option>
+  </select>
+
+  <script>
+    const nomi = document.getElementById('nomi');
+    nomi.style.overflowY = 'hidden';
+
+    // Gestisce la selezione di una riga
+    nomi.addEventListener('change', (event) => {
+      // Ottieni le opzioni selezionate
+      const opzioniSelezionate = nomi.querySelectorAll('option:selected');
+      // Aggiorna l'elenco dei nomi selezionati
+      const elencoNomi = document.getElementById('elenco-nomi');
+      elencoNomi.innerHTML = '';
+      for (const opzione of opzioniSelezionate) {
+        const nome = opzione.textContent;
+        const li = document.createElement('li');
+        li.textContent = nome;
+        elencoNomi.appendChild(li);
+      }
+    });
+  </script>
+
+  <p>Nomi selezionati:</p>
+  <ul id="elenco-nomi"></ul>
+</body>
+</html>

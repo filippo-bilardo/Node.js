@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elenco di nomi selezionabili</title>
+  <style>
+    #name-list {
+      width: 300px;
+      height: 150px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      overflow: auto;
+    }
+
+    .selected {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <label for="name-list">Inserisci 10 nomi (uno per riga):</label>
+    <div id="name-list" contenteditable></div>
+  </div>
+  <ul id="selected-names"></ul>
+
+  <script>
+    const nameList = document.getElementById('name-list');
+    const selectedNames = document.getElementById('selected-names');
+
+    nameList.addEventListener('click', handleLineClick);
+
+    function handleLineClick(event) {
+      const range = window.getSelection().getRangeAt(0);
+      const clickedLine = getLineNumber(nameList, range.getBoundingClientRect().top);
+      console.log(clickedLine);
+      toggleLineSelection(clickedLine);
+    }
+
+    function getLineNumber(element, y) {
+      const lineHeight = parseInt(window.getComputedStyle(element).lineHeight, 10);
+      const lines = element.innerText.split('\n');
+      let lineNumber = 0;
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (y < (lineNumber + 1) * lineHeight) {
+          return i;
+        }
+        lineNumber += line.length + 1; // +1 per il carattere di nuova riga
+      }
+
+      return -1; // Fuori dai limiti
+    }
+
+    function toggleLineSelection(lineNumber) {
+      const lines = nameList.innerText.split('\n');
+      const selectedLine = lines[lineNumber];
+
+      if (selectedLine) {
+        const li = document.createElement('li');
+        li.textContent = selectedLine;
+        li.classList.toggle('selected');
+        selectedNames.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>

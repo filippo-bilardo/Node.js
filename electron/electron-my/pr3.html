@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selezione righe textarea</title>
+<style>
+.selected {
+  background-color: #ddd;
+}
+</style>
+</head>
+<body>
+
+<div>
+  <label for="name-list">Inserisci 10 nomi (uno per riga):</label>
+  <textarea id="name-list" rows="10">
+ riga 1
+ riga 2
+ riga 3
+ riga 4
+ riga 5
+  </textarea>
+</div>
+<ul id="selected-names"></ul>
+
+  <script>
+const nameList = document.getElementById('name-list');
+const selectedNames = document.getElementById('selected-names');
+
+nameList.addEventListener('click', handleLineClick);
+
+function handleLineClick(event) {
+  const clickedLine = getLineNumber(event.target, event.clientY);
+  console.log(clickedLine);
+  toggleLineSelection(clickedLine);
+}
+
+function getLineNumber(textarea, y) {
+  const lineHeight = parseInt(window.getComputedStyle(textarea).lineHeight, 10);
+  const lines = textarea.value.split('\n');
+  let lineNumber = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (y < (lineNumber + 1) * lineHeight) {
+      return i;
+    }
+    lineNumber += line.length + 1; // +1 per il carattere di nuova riga
+  }
+
+  return -1; // Fuori dai limiti
+}
+
+function toggleLineSelection(lineNumber) {
+  const lines = nameList.value.split('\n');
+  const selectedLine = lines[lineNumber];
+
+  if (selectedLine) {
+    const li = document.createElement('li');
+    li.textContent = selectedLine;
+    li.classList.toggle('selected');
+    selectedNames.appendChild(li);
+  }
+}
+  </script>
+</body>
+</html>
