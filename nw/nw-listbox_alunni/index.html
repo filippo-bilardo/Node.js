@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html> 
+  <head>
+    <title>NW.js + jQuery example</title>
+    <script src="node_modules/jquery/dist/jquery.min.js" defer></script>
+    <script src="main.js" defer></script>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      img {
+        max-height: 200px;
+      }
+      .center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <h1>Listbox Alunni</h1>
+      <!-- 
+      Inserisco due listbox che conterranno i nomi degli alunni, alunni_presenti
+      e alunni_assenti.
+      Tra i due listbox troviamo i pulsanti che permettono lo spostamento dei dati
+       -->
+      <div id="lb_alunni">
+        <select id="lb_alunni_presenti" size="10" style="width: 200px;"></select>
+        <div id="comandi">
+          <button id="btn_add_selected" title="Aggiungi selezionati" autofocus="true">></button>
+          <button id="btn_rmv_selected" title="Rimuovi selezionati"><</button>
+          <button id="btn_del_selected" title="Elimina selezionati">Elimina</button>
+          <button id="btn_add_all" title="Aggiungi tutti">>></button>
+          <button id="btn_rmv_all" title="Rimuovi tutti"><<</button>
+          <button id="btn_del_all" title="Rimuovi tutti">Elimina tutti</button>
+        </div>
+        <select id="lb_alunni_assenti" size="10" style="width: 200px;"></select>
+      </div>
+    </div>
+  </body>
+</html>
